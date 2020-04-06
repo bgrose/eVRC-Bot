@@ -10,10 +10,6 @@ import asyncio
 Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
-@client.event
-async def on_ready():
-    print("Bot is ready!")
-
 client.remove_command("help")
 
 
@@ -38,6 +34,9 @@ def player_list(input):
 
     return lst
 
+@client.event
+async def on_ready():
+    print("Bot is ready!")
 
 @client.command()
 async def p(ctx):
