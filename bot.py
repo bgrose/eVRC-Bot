@@ -4,7 +4,6 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 from mcstatus import MinecraftServer
 
-import asyncio
 
 
 Client = discord.Client()
@@ -35,11 +34,11 @@ def player_list(input):
     return lst
 
 @client.event
-async def on_ready():
+def on_ready():
     print("Bot is ready!")
 
 @client.command()
-async def p(ctx):
+def p(ctx):
     server = MinecraftServer.lookup("Vextossup.join-mc.net")
     status = server.status()
     player_count = status.players.online
@@ -59,14 +58,14 @@ async def p(ctx):
 
 
 @client.command()
-async def help(ctx):
+def help(ctx):
     reply = "```\n" + "Type !p to get a list of the current online players." + "\n```"
 
     await ctx.send(reply)
 
 
 @client.event
-async def update_game():
+ def update_game():
     await client.wait_until_ready()
 
     while True:
